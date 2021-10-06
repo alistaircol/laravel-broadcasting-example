@@ -19,9 +19,7 @@
                 return {
                     value: null,
                     init() {
-                        console.log('sdfsdfsdfsdf');
                         window.Echo.channel('example').listen('.example', (e) => {
-                            console.log(e);
                             this.value = e.message;
                         })
                     }
