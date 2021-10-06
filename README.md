@@ -203,3 +203,10 @@ Verify interpolation is correct from `.env` with:
 * [`app/Events/ExampleEvent.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/app/Events/ExampleEvent.php#L25) a very simple event with broadcasting enabled
 * [`routes/console.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/routes/console.php#L28) for dispatching a broadcast event with `php artisan broadcast`
 * [`resources/views/welcome.blade.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/resources/views/welcome.blade.php#L18) for alpine component listening for Echo events and updating state
+
+## Bonus Slack Notification
+
+* [`app/Notifications/SlackNotification.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/app/Notifications/SlackNotification.php#L48) a rich Slack notification
+* [`routes/console.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/routes/console.php#L22) for dispatching notification
+
+![slack notification](https://raw.githubusercontent.com/alistaircol/laravel-broadcasting-example/main/.github/bonus-cheems-notification.png)
