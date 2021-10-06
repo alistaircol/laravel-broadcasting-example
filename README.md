@@ -1,8 +1,16 @@
 # Terrible example of Laravel Broadcasting
 
-Wanted to learn Laravel broadcasting.
+**TL;DR**:
 
-Documented setting up new project and MVP to have server-side event handler on front-end.
+* [`app/Events/ExampleEvent.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/app/Events/ExampleEvent.php#L25) a very simple event with broadcasting enabled
+* [`routes/console.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/routes/console.php#L28) for dispatching a broadcast event with `php artisan broadcast`
+* [`resources/views/welcome.blade.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/resources/views/welcome.blade.php#L18) for alpine component listening for Echo events and updating state
+
+---
+
+I wanted to learn Laravel broadcasting.
+
+Here I have documented setting up new project and MVP to have server-side event handler on front-end. Some things may be missing, but hopefully nothing too major.
 
 ## Fresh Project with Docker
 
@@ -105,6 +113,8 @@ Update `.env`:
 +QUEUE_CONNECTION=redis
 ```
 
+## Debugging
+
 Debugging (Laravel sail options TBD - doesn't quite work):
 
 `.env`:
@@ -130,13 +140,17 @@ Verify interpolation is correct from `.env` with:
 ./vendor/bin/sail config
 ```
 
-## Getting Started:
+## Getting Started
 
 ```bash
 ./vendor/bin/sail npm install
 ./vendor/bin/sail npm install --save-dev laravel-echo
-./vendor/bin/sail artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="migrations"
-./vendor/bin/sail artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="config"
+./vendor/bin/sail artisan vendor:publish \
+  --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" \
+  --tag="migrations"
+./vendor/bin/sail artisan vendor:publish \
+  --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" \
+  --tag="config"
 # not entirely necessary
 ./vendor/bin/sail artisan migrate
 
@@ -178,7 +192,7 @@ Verify interpolation is correct from `.env` with:
          ],
 ```
 
-Expose `'6001:6001'` on `docker-compose.yml` server.
+**NOTE:** Expose `'6001:6001'` on `docker-compose.yml` server.
 
 ```
 ./vendor/bin/sail artisan websockets:serve
@@ -186,5 +200,6 @@ Expose `'6001:6001'` on `docker-compose.yml` server.
 
 ## Example
 
-* `routes/console.php` for dispatching a broadcast event with `php artisan broadcast`
-* `resources/views/welcome.blade.php` for alpine component listening for Echo events and updating state
+* [`app/Events/ExampleEvent.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/app/Events/ExampleEvent.php#L25) a very simple event with broadcasting enabled
+* [`routes/console.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/routes/console.php#L28) for dispatching a broadcast event with `php artisan broadcast`
+* [`resources/views/welcome.blade.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/resources/views/welcome.blade.php#L18) for alpine component listening for Echo events and updating state
