@@ -198,6 +198,16 @@ Verify interpolation is correct from `.env` with:
 ./vendor/bin/sail artisan websockets:serve
 ```
 
+## Jetstream & Other UI Niceties
+
+```bash
+./vendor/bin/sail up
+./vendor/bin/sail composer require laravel/jetstream
+./vendor/bin/sail artisan jetstream:install livewire
+./vendor/bin/sail npm install; ./vendor/bin/sail npm run dev
+./vendor/bin/sail artisan migrate 
+```
+
 ## Example
 
 * [`app/Events/ExampleEvent.php`](https://github.com/alistaircol/laravel-broadcasting-example/blob/main/app/Events/ExampleEvent.php#L25) a very simple event with broadcasting enabled
